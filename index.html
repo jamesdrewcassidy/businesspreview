@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewed Awakening | Artisanal Specialty Coffee & Roasters</title>
+    <meta name="description" content="Discover handcrafted specialty coffee at Brewed Awakening. We ethically source the world's finest beans, roast them to perfection in-house, and share our passion from bean to cup.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        /*
+        ============================================
+        --- Root Variables & Global Styles
+        ============================================
+        */
+        :root {
+            --brand-brown: #4A2E2B;
+            --brand-tan: #DAB49D;
+            --brand-cream: #FFF8F3;
+            --brand-dark: #2F1D1B;
+            --brand-light-gray: #F3F4F6;
+            --brand-green: #2E4A3B;
+            --brand-gold: #D4AF37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-cream);
+            color: var(--brand-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /*
+        ============================================
+        --- Header & Navigation
+        ============================================
+        */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 248, 243, 0.8);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            padding: 15px 0;
+        }
+
+        header.scrolled {
+            background: var(--brand-cream);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 10px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--brand-brown);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--brand-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--brand-brown);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-tan);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-nav-toggle .icon-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--brand-dark);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /*
+        ============================================
+        --- General Components (Buttons, Cards, Titles)
+        ============================================
+        */
+        .btn {
+            display: inline-block;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--brand-brown);
+            color: white;
+            border: 2px solid var(--brand-brown);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--brand-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--brand-brown);
+            border: 2px solid var(--brand-tan);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--brand-cream);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            color: var(--brand-dark);
+        }
+
+        .section-title.on-dark {
+            color: black;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--brand-tan);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            color: #5c5c5c;
+        }
+
+        .section-subtitle.on-dark {
+            color: black;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /*
+        ============================================
+        --- Section Styles
+        ============================================
+        */
+        .section {
+            padding: 6rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px; /* For fixed header */
+            background-image: linear-gradient(rgba(47, 29, 27, 0.85), rgba(47, 29, 27, 0.85)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            color: white;
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--brand-dark);
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--brand-brown);
+            border-left: 4px solid var(--brand-tan);
+            padding-left: 25px;
+            margin: 30px 0;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Why Choose Us Section */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            height: 100%;
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+        
+        .feature-card:hover {
+            background: white;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(218, 180, 157, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .feature-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--brand-brown);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--brand-dark);
+        }
+        
+        .feature-card p {
+            color: #555;
+            font-size: 1.05rem;
+        }
+        
+        /* Sourcing Section */
+        .sourcing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+        .sourcing-card {
+            position: relative;
+            padding: 35px;
+            border-radius: 16px;
+            height: 450px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+
+        .sourcing-card:hover {
+            transform: scale(1.03);
+        }
+
+        .sourcing-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.1) 100%);
+            z-index: 1;
+        }
+
+        .sourcing-card-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .sourcing-card h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .sourcing-card p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .origin-details {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .origin-detail {
+            flex: 1;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .origin-detail strong {
+            display: block;
+            color: var(--brand-tan);
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        .origin-detail span {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        
+        /* Menu Section */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .menu-tab {
+            padding: 12px 25px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-tab.active, .menu-tab:hover {
+            background: var(--brand-brown);
+            color: white;
+            border-color: var(--brand-brown);
+            transform: translateY(-2px);
+        }
+        
+        .menu-panel {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            display: none; /* Hidden by default */
+        }
+
+        .menu-panel.active {
+            display: block;
+        }
+        
+        .menu-category {
+            margin-bottom: 40px;
+        }
+
+        .menu-category:last-child {
+            margin-bottom: 0;
+        }
+        
+        .menu-category h3 {
+            font-size: 1.8rem;
+            color: var(--brand-brown);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--brand-tan);
+            display: inline-block;
+        }
+
+        .menu-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 15px;
+            padding: 20px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-details {
+            grid-column: 1 / 2;
+        }
+        
+        .menu-item h4 {
+            font-size: 1.25rem;
+            color: var(--brand-dark);
+            margin-bottom: 8px;
+        }
+        
+        .menu-item p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .price {
+            grid-column: 2 / 3;
+            grid-row: 1 / 3;
+            font-weight: 700;
+            color: var(--brand-brown);
+            font-size: 1.25rem;
+            align-self: center;
+        }
+
+        /* Testimonials Section */
+        .testimonial-slider-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .testimonial-slider {
+            overflow: hidden;
+        }
+        
+        .testimonial-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid var(--brand-tan);
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.7;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--brand-brown);
+        }
+        
+        .testimonial-location {
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            left: -20px;
+            right: -20px;
+            width: calc(100% + 40px);
+        }
+
+        .slider-btn {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .slider-btn:hover {
+            background: var(--brand-cream);
+            transform: scale(1.1);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: white;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay svg {
+            width: 40px;
+            height: 40px;
+        }
+        
+        /* Visit Us Section */
+        .visit-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .visit-info h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--brand-dark);
+        }
+        
+        .visit-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #444;
+            line-height: 1.7;
+        }
+        
+        .visit-details {
+            margin-top: 30px;
+        }
+        
+        .detail-item {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        
+        .detail-label {
+            width: 100px;
+            font-weight: 600;
+            color: var(--brand-dark);
+            flex-shrink: 0;
+        }
+        
+        .detail-value {
+            flex: 1;
+            color: #555;
+        }
+        
+        .visit-map {
+            height: 450px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--brand-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 40px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .footer-about-text {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: var(--brand-tan);
+            transform: translateY(-3px);
+        }
+        
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--brand-tan);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--brand-tan);
+            padding-left: 5px;
+        }
+        
+        .newsletter p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 6px 0 0 6px;
+            font-size: 0.95rem;
+            background: rgba(255,255,255,0.9);
+            color: var(--brand-dark);
+        }
+        .newsletter-input:focus {
+            outline: 2px solid var(--brand-tan);
+        }
+        
+        .newsletter-button {
+            background: var(--brand-tan);
+            color: var(--brand-dark);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 6px 6px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .newsletter-button:hover {
+            background: #e0c09e;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /*
+        ============================================
+        --- Responsive Styles
+        ============================================
+        */
+        @media (max-width: 1024px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background-color: var(--brand-cream);
+                flex-direction: column;
+                padding: 100px 40px;
+                gap: 25px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .mobile-nav-toggle.active .icon-bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-6px, 6px);
+            }
+            .mobile-nav-toggle.active .icon-bar:nth-child(2) {
+                opacity: 0;
+            }
+            .mobile-nav-toggle.active .icon-bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -5px);
+            }
+            
+            .about-content, .visit-content {
+                grid-template-columns: 1fr;
+            }
+
+            .visit-content .visit-map {
+                grid-row: 1; /* Map appears first on mobile */
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 0;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .about-text h2, .visit-info h2 {
+                font-size: 2.2rem;
+            }
+
+            .menu-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .price {
+                grid-column: 1;
+                grid-row: 2;
+                justify-self: start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Brewed Awakening</a>
+            <nav class="nav-links" id="nav-menu">
+                <a href="#about" class="nav-link">Our Story</a>
+                <a href="#sourcing" class="nav-link">Sourcing</a>
+                <a href="#menu" class="nav-link">Menu</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#visit" class="nav-link">Visit Us</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Menu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title reveal">Where Every Sip is a Revelation</h1>
+            <p class="hero-subtitle reveal">Artisanal coffee crafted with passion, from ethically sourced beans to perfectly roasted brews. Experience coffee as it was meant to be.</p>
+            <div class="btn-group">
+                <a href="#menu" class="btn btn-primary reveal">Explore Our Menu</a>
+                <a href="#visit" class="btn btn-secondary reveal">Visit Our Cafe</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container text-center">
+                <h2 class="section-title reveal">A Story Steeped in Passion</h2>
+                <p class="section-subtitle reveal">From humble beginnings to a beloved community hub, our journey is one of dedication to the craft of coffee.</p>
+                
+                <div class="about-content">
+                    <div class="about-image reveal">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="Cozy interior of the Brewed Awakening coffee shop" onerror="this.onerror=null;this.src='https://placehold.co/800x600/FFF8F3/4A2E2B?text=Our+Cafe';">
+                    </div>
+                    <div class="about-text reveal text-left">
+                        <h2>Crafting Community Through Coffee</h2>
+                        <p>Founded in 2015 by coffee enthusiasts Elena Rodriguez and James Wilson, Brewed Awakening began as a small roastery in Portland's historic Pearl District. What started as a passion project quickly grew into a beloved community gathering place, known for its exceptional coffee and welcoming atmosphere.</p>
+                        <p>Our mission is simple: to source the world's finest beans ethically, roast them to perfection in-house, and serve them with genuine hospitality. We believe coffee is more than a beverage—it's a catalyst for connection, creativity, and community.</p>
+                        <div class="quote reveal">
+                            "Coffee is the common thread that connects us all—farmers, roasters, baristas, and drinkers. At Brewed Awakening, we honor this connection with every cup we serve."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="section bg-brand-light-gray">
+            <div class="container text-center">
+                <h2 class="section-title reveal">Why Brewed Awakening?</h2>
+                <p class="section-subtitle reveal">We're obsessed with quality at every step, ensuring the perfect cup reaches your hands.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 3a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m15-3V6a2.25 2.25 0 00-2.25-2.25H9.75A2.25 2.25 0 007.5 6v3m12 0a2.25 2.25 0 00-2.25-2.25H9.75a2.25 2.25 0 00-2.25 2.25m15 0a2.25 2.25 0 00-2.25-2.25H9.75a2.25 2.25 0 00-2.25 2.25" /></svg>
+                        </div>
+                        <h3>Ethically Sourced</h3>
+                        <p>We build direct relationships with farmers to ensure fair wages and sustainable practices from Rainforest Alliance Certified farms.</p>
+                    </div>
+                    
+                    <div class="feature-card reveal" style="transition-delay: 200ms;">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.362-3.797A8.333 8.333 0 0112 2.25c1.153 0 2.243.3 3.224.862l.362.152z" /></svg>
+                        </div>
+                        <h3>Expertly Roasted</h3>
+                        <p>Our master roasters use traditional techniques combined with modern technology to unlock each bean's unique potential.</p>
+                    </div>
+                    
+                    <div class="feature-card reveal" style="transition-delay: 400ms;">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>
+                        </div>
+                        <h3>Freshness Delivered</h3>
+                        <p>We roast in small batches multiple times per week and ship within 24 hours. Taste the difference that true freshness makes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sourcing Section -->
+        <section id="sourcing" class="section bg-brand-green">
+            <div class="container text-center">
+                <h2 class="section-title reveal on-dark">From Bean to Cup</h2>
+                <p class="section-subtitle reveal on-dark">Our quest for the perfect coffee takes us around the world. We partner with small, dedicated farms in the most renowned coffee-growing regions.</p>
+                
+                <div class="sourcing-grid">
+                    <div class="sourcing-card reveal" style="background-image: url('https://images.unsplash.com/photo-1596796773854-5589a37c3a2a?auto=format&fit=crop&w=800&q=80');">
+                        <div class="sourcing-card-content">
+                            <h3>Antigua, Guatemala</h3>
+                            <p>Nestled between three volcanoes, the rich soil produces beans with a full body, and notes of cocoa and soft spice.</p>
+                            <div class="origin-details">
+                                <div class="origin-detail"><strong>Altitude</strong><span>1,500-1,700m</span></div>
+                                <div class="origin-detail"><strong>Variety</strong><span>Bourbon</span></div>
+                                <div class="origin-detail"><strong>Harvest</strong><span>Nov - Mar</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sourcing-card reveal" style="transition-delay: 200ms; background-image: url('https://images.unsplash.com/photo-1599138634522-106200215a38?auto=format&fit=crop&w=800&q=80');">
+                        <div class="sourcing-card-content">
+                            <h3>Yirgacheffe, Ethiopia</h3>
+                            <p>The birthplace of coffee, Yirgacheffe's beans are renowned for their bright, floral, and citrus notes.</p>
+                            <div class="origin-details">
+                                <div class="origin-detail"><strong>Altitude</strong><span>1,700-2,200m</span></div>
+                                <div class="origin-detail"><strong>Variety</strong><span>Heirloom</span></div>
+                                <div class="origin-detail"><strong>Harvest</strong><span>Oct - Dec</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sourcing-card reveal" style="transition-delay: 400ms; background-image: url('https://images.unsplash.com/photo-1618196695191-03635257a73a?auto=format&fit=crop&w=800&q=80');">
+                        <div class="sourcing-card-content">
+                            <h3>Sumatra, Indonesia</h3>
+                            <p>Known for the unique wet-hulling process, these beans offer a heavy body with deep, earthy flavors of cedar and tobacco.</p>
+                            <div class="origin-details">
+                                <div class="origin-detail"><strong>Altitude</strong><span>1,100-1,300m</span></div>
+                                <div class="origin-detail"><strong>Variety</strong><span>Typica</span></div>
+                                <div class="origin-detail"><strong>Harvest</strong><span>Sep - Dec</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="section">
+            <div class="container text-center">
+                <h2 class="section-title reveal">Our Menu</h2>
+                <p class="section-subtitle reveal">From our signature roasted beans to handcrafted drinks and fresh pastries, every item is crafted with care.</p>
+                
+                <div class="menu-tabs reveal">
+                    <button class="menu-tab active" data-target="panel-1">Espresso & Brewed</button>
+                    <button class="menu-tab" data-target="panel-2">Signature Drinks</button>
+                    <button class="menu-tab" data-target="panel-3">Pastries & Food</button>
+                </div>
+                
+                <div id="panel-1" class="menu-panel active reveal">
+                    <div class="menu-category">
+                        <h3>Espresso Classics</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Espresso</h4>
+                                <p>A concentrated, full-bodied shot of our house espresso blend.</p>
+                            </div>
+                            <span class="price">$3.00</span>
+                        </div>
+                        <div class="menu-item">
+                             <div class="menu-item-details">
+                                <h4>Cappuccino</h4>
+                                <p>Equal parts espresso, steamed milk, and velvety microfoam.</p>
+                            </div>
+                            <span class="price">$4.50</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Latte</h4>
+                                <p>Espresso with steamed milk and a light layer of foam.</p>
+                            </div>
+                            <span class="price">$4.75</span>
+                        </div>
+                    </div>
+                    <div class="menu-category">
+                        <h3>Brewed Coffee</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Drip Coffee</h4>
+                                <p>Our daily rotating single-origin selection, brewed fresh.</p>
+                            </div>
+                            <span class="price">$3.25</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Pour Over</h4>
+                                <p>Your choice of single-origin, brewed by hand via V60.</p>
+                            </div>
+                            <span class="price">$5.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Nitro Cold Brew</h4>
+                                <p>Infused with nitrogen for a creamy, cascading texture.</p>
+                            </div>
+                            <span class="price">$5.50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="panel-2" class="menu-panel reveal">
+                    <div class="menu-category">
+                        <h3>Signature Creations</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Honey Lavender Latte</h4>
+                                <p>A soothing blend with house-made honey-lavender syrup.</p>
+                            </div>
+                            <span class="price">$5.50</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Maple Cardamom Cortado</h4>
+                                <p>Infused with warm maple and aromatic cardamom.</p>
+                            </div>
+                            <span class="price">$5.25</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>The Awakening</h4>
+                                <p>Shaken espresso with oat milk, brown sugar, and cinnamon.</p>
+                            </div>
+                            <span class="price">$6.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="panel-3" class="menu-panel reveal">
+                    <div class="menu-category">
+                        <h3>Freshly Baked</h3>
+                         <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Butter Croissant</h4>
+                                <p>Flaky, buttery, and baked fresh every morning.</p>
+                            </div>
+                            <span class="price">$3.50</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Avocado Toast</h4>
+                                <p>Sourdough toast with fresh avocado, chili flakes, and sea salt.</p>
+                            </div>
+                            <span class="price">$8.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <h4>Morning Bun</h4>
+                                <p>Cinnamon-sugar swirl with a hint of orange zest.</p>
+                            </div>
+                            <span class="price">$4.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="section bg-brand-light-gray">
+            <div class="container text-center">
+                <h2 class="section-title reveal">What Our Community Says</h2>
+                <p class="section-subtitle reveal">We're proud of the coffee we roast, but we're even prouder of the community we've built.</p>
+                
+                <div class="testimonial-slider-container reveal">
+                    <div class="testimonial-slider">
+                        <div class="testimonial-wrapper">
+                            <div class="testimonial">
+                                <div class="testimonial-avatar">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Sarah M." onerror="this.onerror=null;this.src='https://placehold.co/200x200/DAB49D/4A2E2B?text=SM';">
+                                </div>
+                                <p class="testimonial-text">"The Colombian Supremo is hands down the best coffee I've ever had. The depth of flavor is incredible and it arrives perfectly fresh every single time. Brewed Awakening has ruined other coffee for me!"</p>
+                                <div class="testimonial-author">Sarah M.</div>
+                                <div class="testimonial-location">Portland, OR</div>
+                            </div>
+                            <div class="testimonial">
+                                <div class="testimonial-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="David L." onerror="this.onerror=null;this.src='https://placehold.co/200x200/DAB49D/4A2E2B?text=DL';">
+                                </div>
+                                <p class="testimonial-text">"I love the atmosphere at the Pearl District cafe. It's my go-to spot for getting work done. The staff are always so friendly, and the Honey Lavender Latte is my absolute favorite treat."</p>
+                                <div class="testimonial-author">David L.</div>
+                                <div class="testimonial-location">Beaverton, OR</div>
+                            </div>
+                            <div class="testimonial">
+                                <div class="testimonial-avatar">
+                                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" alt="Chloe K." onerror="this.onerror=null;this.src='https://placehold.co/200x200/DAB49D/4A2E2B?text=CK';">
+                                </div>
+                                <p class="testimonial-text">"The pour-over guide on the website is fantastic! I finally feel like I can make a decent cup of coffee at home. Thanks for sharing your knowledge and passion with the community."</p>
+                                <div class="testimonial-author">Chloe K.</div>
+                                <div class="testimonial-location">Online Customer</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="slider-btn" id="prev-slide" aria-label="Previous testimonial">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </button>
+                        <button class="slider-btn" id="next-slide" aria-label="Next testimonial">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <div class="container text-center">
+                <h2 class="section-title reveal">Moments at Awakening</h2>
+                <p class="section-subtitle reveal">A glimpse into our world of coffee, community, and craft.</p>
+                <div class="gallery-grid reveal">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=600&q=80" alt="Latte art" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFF8F3/4A2E2B?text=Latte+Art';">
+                        <div class="gallery-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1528699633788-424202dc3895?auto=format&fit=crop&w=600&q=80" alt="Coffee beans being roasted" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFF8F3/4A2E2B?text=Roasting';">
+                        <div class="gallery-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Customers enjoying coffee in the cafe" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFF8F3/4A2E2B?text=Community';">
+                        <div class="gallery-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=600&q=80" alt="Freshly baked pastries" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFF8F3/4A2E2B?text=Pastries';">
+                        <div class="gallery-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visit Us Section -->
+        <section id="visit" class="section">
+            <div class="container">
+                <div class="visit-content">
+                    <div class="visit-info reveal">
+                        <h2>Visit Our Cafe</h2>
+                        <p>Experience the heart of Brewed Awakening. Our flagship cafe and roastery is a place for community, conversation, and of course, incredible coffee. Watch our roasters at work, chat with our baristas, and enjoy a perfectly prepared cup in our warm, inviting space.</p>
+                        
+                        <div class="visit-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Address</div>
+                                <div class="detail-value">123 Coffee Lane, Portland, OR 97209</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Hours</div>
+                                <div class="detail-value">Mon-Fri: 7am - 8pm<br>Sat-Sun: 8am - 6pm</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Phone</div>
+                                <div class="detail-value">(555) 123-4567</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="visit-map reveal">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.424128453985!2d-122.681919684234!3d45.52306443893327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950a0a5a5a5a5%3A0x1234567890abcdef!2sPowell's%20City%20of%20Books!5e0!3m2!1sen!2sus!4v1678886400000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Map of our location"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section bg-brand-light-gray">
+            <div class="container text-center">
+                <h2 class="section-title reveal">Get in Touch</h2>
+                <p class="section-subtitle reveal">Have a question, a wholesale inquiry, or just want to talk coffee? We'd love to hear from you.</p>
+                
+                <div class="contact-form-container reveal" style="max-width: 800px; margin: 0 auto;">
+                    <form style="background: white; border-radius: 20px; padding: 50px; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1); text-align: left;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Full Name</label>
+                                <input type="text" placeholder="John Doe" required style="width: 100%; padding: 14px 18px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Email Address</label>
+                                <input type="email" placeholder="you@example.com" required style="width: 100%; padding: 14px 18px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                            
+                            <div style="grid-column: span 2; margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Message</label>
+                                <textarea placeholder="Your message..." required style="width: 100%; min-height: 150px; resize: vertical; padding: 14px 18px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">Brewed Awakening</div>
+                    <p class="footer-about-text">Crafting exceptional coffee experiences since 2015. Passionate about ethically sourced beans, expert roasting, and building community.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.415 2.175 8.796 2.163 12 2.163m0-1.082c-3.264 0-3.66.014-4.944.076-4.357.2-6.234 2.078-6.432 6.432C.56 8.34 0 8.738 0 12s.56 3.66.634 4.944c.2 4.354 2.075 6.232 6.432 6.432C8.34 23.44 8.738 24 12 24s3.66-.56 4.944-.634c4.356-.2 6.232-2.078 6.432-6.432C23.44 15.66 24 15.262 24 12s-.56-3.66-.634-4.944c-.2-4.354-2.076-6.232-6.432-6.432C15.66.634 15.262 0 12 0z"/><path d="M12 6.837a5.163 5.163 0 100 10.326 5.163 5.163 0 000-10.326zm0 8.662a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"/><path d="M16.95 6.402a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/></svg></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#visit">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Newsletter</h3>
+                    <div class="newsletter">
+                        <p>Subscribe for exclusive offers, brewing tips, and new coffee releases.</p>
+                        <form class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Email for newsletter">
+                            <button type="submit" class="newsletter-button">Join</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Brewed Awakening Coffee Roasters. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Header Scroll Effect ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- Mobile Navigation ---
+        const navToggle = document.getElementById('mobile-nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // --- Scroll Reveal Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // --- Menu Tab Functionality ---
+        const tabs = document.querySelectorAll('.menu-tab');
+        const panels = document.querySelectorAll('.menu-panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Deactivate all tabs and panels
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+
+                // Activate clicked tab and corresponding panel
+                tab.classList.add('active');
+                const targetPanel = document.getElementById(tab.dataset.target);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
+            });
+        });
+
+        // --- Testimonial Slider ---
+        const wrapper = document.querySelector('.testimonial-wrapper');
+        const testimonials = document.querySelectorAll('.testimonial');
+        const nextBtn = document.getElementById('next-slide');
+        const prevBtn = document.getElementById('prev-slide');
+        let currentIndex = 0;
+        const totalSlides = testimonials.length;
+
+        function updateSlider() {
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        }, 5000);
+    });
+    </script>
+</body>
+</html>
